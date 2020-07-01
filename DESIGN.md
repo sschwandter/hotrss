@@ -43,3 +43,7 @@ Current status:
 * Decided on letting JPA generate ids for the analyses, alternative would have been UUID generation and
   getting rid of the Analysis entity entirely. But it seems ok to do so, "Analysis" could contain more other
   data besides the list if topics in the future and the ids look nicer than UUIDs.
+
+Future ideas:
+
+* Document API with OpenAPI 3.0, look into autogenerating models.
