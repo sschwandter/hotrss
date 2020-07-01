@@ -1,4 +1,4 @@
-package org.shockfrosted.hotrss.input;
+package org.shockfrosted.hotrss.service;
 
 import com.apptastic.rssreader.Item;
 import com.apptastic.rssreader.RssReader;

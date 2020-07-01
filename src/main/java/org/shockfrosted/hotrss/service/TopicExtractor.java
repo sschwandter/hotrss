@@ -77,7 +77,7 @@ public class TopicExtractor {
     private static class WordMetaData {
 
         private int count;
-        private List<NewsStory> stories = new ArrayList<>();
+        private final Set<NewsStory> stories = new HashSet<>();
 
         public WordMetaData(NewsStory firstStory) {
             count = 1;
@@ -88,7 +88,7 @@ public class TopicExtractor {
             return count;
         }
 
-        public List<NewsStory> getStories() {
+        public Set<NewsStory> getStories() {
             return stories;
         }
 

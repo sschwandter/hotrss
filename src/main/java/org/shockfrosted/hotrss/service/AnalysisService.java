@@ -4,7 +4,6 @@ package org.shockfrosted.hotrss.service;
 import org.shockfrosted.hotrss.model.Analysis;
 import org.shockfrosted.hotrss.model.NewsFeed;
 import org.shockfrosted.hotrss.model.Topic;
-import org.shockfrosted.hotrss.input.RssReaderApptastic;
 import org.shockfrosted.hotrss.repository.AnalysisRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ public class AnalysisService {
 
     final private RssReaderApptastic rssReader;
     final private TopicExtractor topicExtractor;
-    private AnalysisRepository repository;
+    private final AnalysisRepository repository;
 
     public AnalysisService(RssReaderApptastic rssReader, TopicExtractor topicExtractor, AnalysisRepository repository) {
         this.rssReader = rssReader;

@@ -22,14 +22,15 @@ public class TopicExtractorTest {
     @Test
     public void oneWordInThreeFeedsCreatesTopicWithFrequencyThree() {
         //Given
-        List<NewsStory> stories = List.of(
-                new NewsStory("Trump is a good guy", "http://couldthisbetrue.com/item1"),
-                new NewsStory("All is well with Trump", "http://donttrustthepress.com/item56"),
-                new NewsStory("Trump trumps again", "http://imnotserious.com/item99"));
+        final NewsStory story1 = new NewsStory("Trump is a good guy", "http://couldthisbetrue.com/item1");
+        final NewsStory story2 = new NewsStory("All is well with Trump", "http://donttrustthepress.com/item56");
+        final NewsStory story3 = new NewsStory("Trump trumps again", "http://imnotserious.com/item99");
 
-        NewsFeed newsFeed1 = new NewsFeed(List.of(stories.get(0)));
-        NewsFeed newsFeed2 = new NewsFeed(List.of(stories.get(1)));
-        NewsFeed newsFeed3 = new NewsFeed(List.of(stories.get(2)));
+        Set<NewsStory> stories = Set.of(story1, story2, story3);
+
+        NewsFeed newsFeed1 = new NewsFeed(List.of(story1));
+        NewsFeed newsFeed2 = new NewsFeed(List.of(story2));
+        NewsFeed newsFeed3 = new NewsFeed(List.of(story3));
 
         List<NewsFeed> newsFeeds = List.of(newsFeed1, newsFeed2, newsFeed3);
 
@@ -54,7 +55,7 @@ public class TopicExtractorTest {
         Set<Topic> topics = extractor.getTopics(newsFeeds);
 
         //Then
-        Assert.assertEquals(Set.of(new Topic("Everywhere", 2, List.of(story1, story2))), topics);
+        Assert.assertEquals(Set.of(new Topic("Everywhere", 2, Set.of(story1, story2))), topics);
     }
 
     @Test

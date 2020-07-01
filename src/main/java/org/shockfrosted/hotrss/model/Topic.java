@@ -1,26 +1,32 @@
 package org.shockfrosted.hotrss.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@JsonPropertyOrder({"topic", "frequency", "stories"})
 public class Topic {
 
     @Id
     @GeneratedValue
     private Long id;
 
+    @JsonProperty("topic")
     private String title;
     private int frequency;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<NewsStory> stories;
+    private Set<NewsStory> stories;
 
     public Topic() {
     }
 
-    public Topic(String title, int frequency, List<NewsStory> stories) {
+    public Topic(String title, int frequency, Set<NewsStory> stories) {
         this.frequency = frequency;
         this.title = title;
         this.stories = stories;
@@ -34,7 +40,7 @@ public class Topic {
         return this.title;
     }
 
-    public List<NewsStory> getStories() {
+    public Set<NewsStory> getStories() {
         return this.stories;
     }
 
