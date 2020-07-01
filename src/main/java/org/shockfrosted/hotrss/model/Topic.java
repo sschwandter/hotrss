@@ -1,18 +1,24 @@
-package org.shockfrosted.hotrss.domain;
+package org.shockfrosted.hotrss.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 @Entity
 public class Topic {
 
-    final private int frequency;
-    final private String title;
-    final private List<NewsStory> stories;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String title;
+    private int frequency;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<NewsStory> stories;
+
+    public Topic() {
+    }
 
     public Topic(String title, int frequency, List<NewsStory> stories) {
         this.frequency = frequency;
@@ -26,6 +32,10 @@ public class Topic {
 
     public String getTitle() {
         return this.title;
+    }
+
+    public List<NewsStory> getStories() {
+        return this.stories;
     }
 
     @Override
@@ -43,10 +53,13 @@ public class Topic {
         return Objects.hash(frequency, title, stories);
     }
 
-    public List<String> getHeadlines() {
-        return stories.stream()
-                .map(NewsStory::getHeadline)
-                .collect(toList());
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "id=" + id +
+                ", frequency=" + frequency +
+                ", title='" + title + '\'' +
+                ", stories=" + stories +
+                '}';
     }
-
 }

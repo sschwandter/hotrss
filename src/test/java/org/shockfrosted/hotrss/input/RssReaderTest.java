@@ -2,7 +2,7 @@ package org.shockfrosted.hotrss.input;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.shockfrosted.hotrss.domain.NewsFeed;
+import org.shockfrosted.hotrss.model.NewsFeed;
 
 import java.net.URL;
 

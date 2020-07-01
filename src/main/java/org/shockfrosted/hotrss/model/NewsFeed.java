@@ -1,4 +1,4 @@
-package org.shockfrosted.hotrss.domain;
+package org.shockfrosted.hotrss.model;
 
 import java.util.ArrayList;
 import java.util.List;

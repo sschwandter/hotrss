@@ -2,12 +2,11 @@ package org.shockfrosted.hotrss.input;
 
 import com.apptastic.rssreader.Item;
 import com.apptastic.rssreader.RssReader;
-import org.shockfrosted.hotrss.domain.NewsFeed;
-import org.shockfrosted.hotrss.domain.NewsStory;
+import org.shockfrosted.hotrss.model.NewsFeed;
+import org.shockfrosted.hotrss.model.NewsStory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
