@@ -2,6 +2,7 @@ package org.shockfrosted.hotrss.controller;
 
 
 import org.shockfrosted.hotrss.service.AnalysisService;
+import org.shockfrosted.hotrss.service.FeedReadException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +33,8 @@ public class NewAnalysis {
             analysisId = analysisService.createAnalysis(feedUrl);
         } catch (MalformedURLException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not a valid URL", e);
+        } catch (FeedReadException ie) {
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Error reading feed", ie);
         }
         return analysisId;
     }

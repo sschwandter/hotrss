@@ -39,7 +39,6 @@ Current status:
 * Chose to not re-implement RSS feed parsing but to use a library that does job fine
 * For time reasons, only wrote unit tests for the actual topic extraction business logic. Would consider
   integration tests for RSSReaderApptastic and data layer next probably.
-* Kept the integration test for RssReader in, although it should be changed according to TODOs in file
 * Decided on letting JPA generate ids for the analyses, alternative would have been UUID generation and
   getting rid of the Analysis entity entirely. But it seems ok to do so, "Analysis" could contain more other
   data besides the list if topics in the future and the ids look nicer than UUIDs.

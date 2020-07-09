@@ -37,7 +37,7 @@ public class AnalysisService {
             try {
                 feeds.add(rssReader.readFeed(url));
             } catch (IOException e) {
-                throw new RuntimeException();
+                throw new FeedReadException(e);
             }
         }
 
